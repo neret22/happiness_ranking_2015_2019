@@ -1,0 +1,36 @@
+##import all required libraries
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+##load a data from csv file and show a table
+
+data=pd.read_csv("2015.csv") 
+data
+
+##in case you need hvplot and you use google colab, as I did. please install hvplot
+
+!pip install hvplot 
+
+##import hvplot
+
+import hvplot as hv
+import hvplot.pandas
+
+##check what kind of data do you have in specified column ["---"], find max and min with function describe
+
+data["Happiness Score"].describe()
+data["Happiness Rank"].describe()
+data["Freedom"].mean()
+data["Freedom"].max()
+
+## usually we get uncleaned and not very convenient data to work with, so if you want to reanme some columns
+
+data=data.rename(columns={"Economy (GDP per Capita)": "GDP", "Trust (Government Corruption)": "Trust", "Health (Life Expectancy)":"Health"})
+data
+
+##for sorting data by some criteria
+data.sort_values(by="Health", ascending=False )
